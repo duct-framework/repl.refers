@@ -9,4 +9,11 @@
         (require ns-sym)
         (if (= alias name-sym)
           (refer ns-sym :only [name-sym])
-          (refer ns-sym :only [name-sym] :rename {name-sym alias}))))))
+          (refer ns-sym :only [name-sym] :rename {name-sym alias})))))
+  refers)
+
+(defmethod ig/halt-key! :duct.repl/refers [_ refers]
+  (let [ns (find-ns 'user)]
+    (doseq [[alias sym] refers]
+      (when (identical? (resolve sym) (ns-resolve ns alias))
+        (ns-unmap ns alias)))))
