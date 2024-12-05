@@ -18,3 +18,17 @@
     (is (nil? (ns-resolve ns 'return-two)))
     ;; halt again to test idempotency
     (ig/halt-key! :duct.repl/refers refers)))
+
+(deftest test-init-suspend-resume
+  (let [refers (ig/init-key :duct.repl/refers
+                            {'ret-one `return-one
+                             'return-two `return-two})
+        ns     (find-ns 'user)]
+    (is (= 1 ((ns-resolve ns 'ret-one))))
+    (is (= 2 ((ns-resolve ns 'return-two))))
+    (ig/suspend-key! :duct.repl/refers refers)
+    (let [refers' (ig/resume-key :duct.repl/refers {'ret-one `return-one}
+                                 refers refers)]
+      (is (= {'ret-one `return-one} refers'))
+      (is (= 1 ((ns-resolve ns 'ret-one))))
+      (is (nil? (ns-resolve ns 'return-two))))))
