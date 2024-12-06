@@ -32,3 +32,12 @@
       (is (= {'ret-one `return-one} refers'))
       (is (= 1 ((ns-resolve ns 'ret-one))))
       (is (nil? (ns-resolve ns 'return-two))))))
+
+(deftest test-prn-output
+  (is (= (str ":user/added (ret-one return-two)\n"
+              ":user/removed (ret-one return-two)\n")
+         (with-out-str
+           (let [refers (ig/init-key :duct.repl/refers
+                                     {'ret-one `return-one
+                                      'return-two `return-two})]
+             (ig/halt-key! :duct.repl/refers refers))))))

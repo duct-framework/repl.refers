@@ -9,13 +9,17 @@
         (require ns-sym)
         (if (= alias name-sym)
           (refer ns-sym :only [name-sym])
-          (refer ns-sym :only [name-sym] :rename {name-sym alias}))))))
+          (refer ns-sym :only [name-sym] :rename {name-sym alias})))))
+  (when-some [syms (seq (keys refers))]
+    (prn (keyword (str ns-sym) "added") syms)))
 
 (defn- remove-refers [ns-sym refers]
   (let [ns (find-ns ns-sym)]
     (doseq [[alias sym] refers]
       (when (identical? (resolve sym) (ns-resolve ns alias))
-        (ns-unmap ns alias)))))
+        (ns-unmap ns alias))))
+  (when-some [syms (seq (keys refers))]
+    (prn (keyword (str ns-sym) "removed") syms)))
 
 (defn- identical-kvs [m1 m2]
   (reduce-kv (fn [m k v] (if (= v (m2 k ::miss)) (assoc m k v) m))
