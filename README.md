@@ -1,4 +1,4 @@
-# Duct REPL Refers
+# Duct REPL Refers [![Build Status](https://github.com/duct-framework/repl.refers/actions/workflows/test.yml/badge.svg)](https://github.com/duct-framework/repl.refers/actions/workflows/test.yml)
 
 A Clojure library designed to ... well, that part is up to you.
 
