@@ -1,4 +1,4 @@
-(defproject org.duct-framework/repl.refers "0.1.0"
+(defproject org.duct-framework/repl.refers "0.1.1"
   :description "Integrant methods to add vars to user namespace"
   :url "https://github.com/duct-framework/repl.refers"
   :license {:name "Eclipse Public License"

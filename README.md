@@ -11,11 +11,11 @@ REPL.
 
 Add the following dependency to your deps.edn file:
 
-    org.duct-framework/repl.refers {:mvn/version "0.1.0"}
+    org.duct-framework/repl.refers {:mvn/version "0.1.1"}
 
 Or to your Leiningen project file:
 
-    [org.duct-framework/repl.refers "0.1.0"]
+    [org.duct-framework/repl.refers "0.1.1"]
 
 ## Usage
 
