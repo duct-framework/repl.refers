@@ -1,2 +1,2 @@
-{:deps {org.clojure/clojure {:mvn/version "1.12.0"}
-        integrant/integrant {:mvn/version "0.13.1"}}}
+{:deps {org.clojure/clojure {:mvn/version "1.12.3"}
+        integrant/integrant {:mvn/version "1.0.1"}}}
