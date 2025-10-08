@@ -1,0 +1,8 @@
+{:duct.repl/refers
+ {:doc
+  "When initiated, aliases are added to the `user` namespace. When halted,
+  these aliases are removed. This is useful for adding helper functions
+  to the REPL, particularly from modules.
+  
+  Takes a map of alias symbols to fully qualified symbols as its
+  configuration."}}
